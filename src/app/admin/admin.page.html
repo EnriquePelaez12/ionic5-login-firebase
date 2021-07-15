@@ -1,9 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>admin</ion-title>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="end" (click)="logout()">
+      <ion-button>
+          <ion-icon name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Admin</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
+  <!-- <ion-list>
+    <ion-item *ngFor="let usuario of usuarios">
+      
+      <ion-label>
+      <h2>{{ usuario.nombre }}</h2>
+      <p>{{ usuario.correo }}</p>
+    </ion-label>
+    </ion-item>
+  </ion-list> -->
+  <ion-button expand="block" (click) = "cargarUsuarios()">Cargar Usuarios</ion-button>
 
-</ion-content>
+  <ion-button expand="block" (click) = "post()">Peticion POST</ion-button>
+  <ion-button expand="block" (click) = "update()">Peticion update</ion-button>
+
+ </ion-content>

@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { User } from '../shared/user.interface';
 import { AngularFireAuth } from '@angular/fire/auth';
-
 import * as firebase from 'firebase';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { Router } from "@angular/router";
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   public user$: Observable<User>;
 
-  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore) {
+  constructor(
+    public afAuth: AngularFireAuth, 
+    private afs: AngularFirestore,
+    private router : Router) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
@@ -35,6 +39,7 @@ export class AuthService {
     try {
       const { user } = await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
       this.updateUserData(user);
+      // console.log('loginGoogle',user);
       return user;
     } catch (error) {
       console.log('Error->', error);
@@ -76,6 +81,8 @@ export class AuthService {
   async logout(): Promise<void> {
     try {
       await this.afAuth.signOut();
+      this.router.navigate(["login"]);
+      console.log(' auth ');
     } catch (error) {
       console.log('Error->', error);
     }

@@ -6,4 +6,14 @@ import { AuthService } from '../services/auth.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {}
+export class HomePage {
+
+  constructor(
+    private authservice: AuthService,
+  ) { }
+
+  logout(){
+    this.authservice.logout();
+  }
+
+}

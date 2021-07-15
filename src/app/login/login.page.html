@@ -22,7 +22,7 @@
     <ion-row>
       <ion-col>
         <p class="ion-text-end">
-          <a routerLink="/forgot-password">Forgot password? </a>
+          <a routerLink="/forgot-password">Olvide mi contraseña </a>
         </p>
       </ion-col>
     </ion-row>
@@ -30,7 +30,12 @@
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="danger" (click)="onLoginGoogle()" expand="block"
-          >Login with Google
+          >Ingresar con Google
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button type="submit" class="facebook" (click)="LoginFacebook()" expand="block"
+          >Ingresar Facebook
         </ion-button>
       </ion-col>
     </ion-row>
@@ -38,7 +43,7 @@
   <ion-row>
     <ion-col>
       <p class="ion-text-end">
-        <a routerLink="/register">Create an account </a>
+        <a routerLink="/register">Crear una Cuenta </a>
       </p>
     </ion-col>
   </ion-row>
